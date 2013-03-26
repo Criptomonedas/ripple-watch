@@ -239,7 +239,7 @@ var actionMarket = function (message) {
     console.log("m: " + message);
 
     if (self.irc_market) {
-      client.action("#ripple-market", message);
+      client.action("#ripple-market-ar", message);
     }
   }
 }
@@ -251,7 +251,7 @@ var actionWatch = function (message) {
 
     if (self.irc_watch)
     {
-      client.action("#ripple-watch", message);
+      client.action("#ripple-watch-ar", message);
     }
   }
 }
@@ -267,7 +267,7 @@ var writeMarket = function (message, plain) {
     console.log("M: " + (plain ? plain : message));
 
     if (self.irc_market) {
-      client.say("#ripple-market", message);
+      client.say("#ripple-market-ar", message);
     }
   }
 }
@@ -278,7 +278,7 @@ var writeWatch = function (message, plain) {
     console.log("W: " + (plain ? plain : message));
 
     if (self.irc_watch) {
-      client.say("#ripple-watch", message);
+      client.say("#ripple-watch-ar", message);
     }
   }
 }
@@ -617,10 +617,10 @@ remote  =
         }
       });
 
-var client = new irc.Client('irc.freenode.net', 'ripplebot', {
-    userName: "ripplebot",
-    realName: "Ripple IRC Bot",
-//    channels: ['#ripple-market', '#ripple-watch'],
+var client = new irc.Client('irc.freenode.net', 'ripplebotar', {
+    userName: "ripplebotar",
+    realName: "Ripple IRC Bot Argentino",
+//    channels: ['#ripple-market-ar', '#ripple-watch-ar'],
     autoConnect: irc_config.enable,
     stripColors: false,
     floodProtection: true,
@@ -635,18 +635,18 @@ client
 
       if (irc_config.enable)
       {
-        client.join("#ripple-watch", function() {
+        client.join("#ripple-watch-ar", function() {
             self.irc_watch  = true;
 
-            console.log("*** Connected to #ripple-watch");
+            console.log("*** Connected to #ripple-watch-ar");
 
-            if (self.irc_market)
-              remote.connect();
+/*            if (self.irc_market)
+              remote.connect();*/
           });
-        client.join("#ripple-market", function() {
+        client.join("#ripple-market-ar", function() {
             self.irc_market  = true;
 
-            console.log("*** Connected to #ripple-market");
+            console.log("*** Connected to #ripple-market-ar");
 
             if (self.irc_watch)
               remote.connect();
